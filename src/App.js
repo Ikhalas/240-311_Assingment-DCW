@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import Header from '../src/components/Header';
 import MessageList from './components/MessageList';
 import MessageBox from './components/MessageBox';
-import firebase from 'firebase';
+import * as firebase from 'firebase';
+import _ from 'lodash';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import './Login.css';
 
@@ -16,10 +17,16 @@ var config = {
   messagingSenderId: "534230031083"
 };
 
-
 firebase.initializeApp(config);
+var db=firebase.database();
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = { 
+      teams: [] 
+    }
+  }
 
   state = { isSignedIn: false }
   uiConfig = {
@@ -37,6 +44,22 @@ class App extends Component {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
       console.log("user", user)
+    });
+
+    db.ref('/team').on('value',snapshot => {
+      let val = snapshot.val();
+      this.setState({teams:val})
+    });
+  }
+
+  renderPlanets(){
+    return _.map(this.state.teams, team => {
+      return(
+        <div>
+          <h2 className ="big">Name: {team.name} </h2>
+        </div>  
+        
+      )
     })
   }
 
@@ -59,7 +82,18 @@ render() {
           <h1>Welcome <b>{firebase.auth().currentUser.displayName}</b></h1>
         </div>
       </div>
+
+   
+       
+        <p className="comment">Avengers</p>
+          <div class="row">
+            <div class="col">
+               {this.renderPlanets()}
+            </div> 
+          </div> 
         
+         
+
         <p className="comment">Comment</p>
       <div className="columns">
         <div className="column is-3"></div>

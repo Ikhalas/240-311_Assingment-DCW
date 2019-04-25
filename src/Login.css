@@ -51,3 +51,26 @@
     padding-top: 10px;
     padding-left: 200px;
 }
+
+.main-container{
+    padding-top: 30px;
+    width: 100%;
+  }
+  
+  .row{
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    padding-bottom: 20px;
+  
+  }
+  .entry{
+    width: calc(40% - 20px);
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .big{
+      font-size: 20px;
+  }
