@@ -7,7 +7,6 @@ import {Router,Route,Link,browserHistory} from 'react-router';
 
 ReactDOM.render(
     <Router history={browserHistory}>
-        <Route path="/login"component={Login}/>
         <Route path="/"component={App}/>
     </Router>,document.getElementById('root')
     );
