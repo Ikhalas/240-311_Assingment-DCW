@@ -18,7 +18,8 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = { 
-      teams: [] 
+      avengers: [],
+      Guardians: []
     }
   }
 
@@ -40,19 +41,40 @@ class App extends Component {
       console.log("user", user)
     });
 
-    db.ref('/Avengers').on('value',snapshot => {
+    db.ref('/Marvel/Avengers').on('value',snapshot => {
       let val = snapshot.val();
-      this.setState({teams:val})
+      this.setState({avengers:val})
+    });
+
+    db.ref('/Marvel/Guardians').on('value',snapshot => {
+      let val = snapshot.val();
+      this.setState({Guardians:val})
     });
   }
 
-  renderPlanets(){
-    return _.map(this.state.teams, team => {
+  renderAvengers(){
+    return _.map(this.state.avengers, avenger => {
       return(
         <div>
-          <h2 className ="big">{team.name} </h2>
+          <h2 className ="big">{avenger.name} </h2>
           <p>as</p>
-          <h2>{team.as}</h2>
+          <h2>{avenger.as}</h2>
+          <br></br>
+          <p>___________________________________________________</p>
+          <br></br>
+        </div>  
+        
+      )
+    })
+  }
+
+  renderGuardians(){
+    return _.map(this.state.Guardians, Guardian => {
+      return(
+        <div>
+          <h2 className ="big">{Guardian.name} </h2>
+          <p>as</p>
+          <h2>{Guardian.as}</h2>
           <br></br>
           <p>___________________________________________________</p>
           <br></br>
@@ -82,15 +104,23 @@ render() {
         <div className="logout"><button onClick={() => firebase.auth().signOut()}>Sign out!</button></div>
         
       </div>
-
-   
-       
         <p className="comment">Avengers</p>
         <p className="row">___________________________________________________</p>
         <div className="main-container">
           <div className="row">
             <div className="col">
-               {this.renderPlanets()}
+               {this.renderAvengers()}
+            </div> 
+          </div> 
+        </div>
+
+        <br></br><br></br>
+        <p className="comment">Guardians of the Galaxy</p>
+        <p className="row">___________________________________________________</p>
+        <div className="main-container">
+          <div className="row">
+            <div className="col">
+               {this.renderGuardians()}
             </div> 
           </div> 
         </div>
