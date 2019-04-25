@@ -3,19 +3,13 @@ import React, { Component } from 'react';
 import Header from '../src/components/Header';
 import MessageList from './components/MessageList';
 import MessageBox from './components/MessageBox';
+import {config} from './DBConfig';
 import * as firebase from 'firebase';
 import _ from 'lodash';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import './Login.css';
 
-var config = {
-  apiKey: "AIzaSyBZtiPgrmgEDguTvwKSZI2LSJNKSto4hAQ",
-  authDomain: "dcw-react-2.firebaseapp.com",
-  databaseURL: "https://dcw-react-2.firebaseio.com",
-  projectId: "dcw-react-2",
-  storageBucket: "dcw-react-2.appspot.com",
-  messagingSenderId: "534230031083"
-};
+
 
 firebase.initializeApp(config);
 var db=firebase.database();
@@ -46,7 +40,7 @@ class App extends Component {
       console.log("user", user)
     });
 
-    db.ref('/team').on('value',snapshot => {
+    db.ref('/Avengers').on('value',snapshot => {
       let val = snapshot.val();
       this.setState({teams:val})
     });
@@ -56,7 +50,12 @@ class App extends Component {
     return _.map(this.state.teams, team => {
       return(
         <div>
-          <h2 className ="big">Name: {team.name} </h2>
+          <h2 className ="big">{team.name} </h2>
+          <p>as</p>
+          <h2>{team.as}</h2>
+          <br></br>
+          <p>___________________________________________________</p>
+          <br></br>
         </div>  
         
       )
@@ -76,24 +75,28 @@ render() {
         <span> 
 
       <div className="columns">  
-        <div className="header"><Header title="Simple Firebase App" /></div>
-        <div className="logout"><button onClick={() => firebase.auth().signOut()}>Sign out!</button></div>
+        <div className="header"><Header title="Home" /></div>
         <div className="profile">
           <h1>Welcome <b>{firebase.auth().currentUser.displayName}</b></h1>
         </div>
+        <div className="logout"><button onClick={() => firebase.auth().signOut()}>Sign out!</button></div>
+        
       </div>
 
    
        
         <p className="comment">Avengers</p>
-          <div class="row">
-            <div class="col">
+        <p className="row">___________________________________________________</p>
+        <div className="main-container">
+          <div className="row">
+            <div className="col">
                {this.renderPlanets()}
             </div> 
           </div> 
+        </div>
         
          
-
+        <br></br>
         <p className="comment">Comment</p>
       <div className="columns">
         <div className="column is-3"></div>

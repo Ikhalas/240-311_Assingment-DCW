@@ -33,12 +33,12 @@
 
 .logout{
     padding-top: 20px;
-    padding-left: 550px;
+    padding-left: 10px;
 }
 
 .profile{
     padding-top: 20px;
-    padding-left: 10px;
+    padding-left: 450px;
 }
 
 .comment{
@@ -49,12 +49,13 @@
 
 .header{
     padding-top: 10px;
-    padding-left: 200px;
+    padding-left: 300px;
 }
 
 .main-container{
-    padding-top: 30px;
+    padding-top: 20px;
     width: 100%;
+    border: #000;
   }
   
   .row{
