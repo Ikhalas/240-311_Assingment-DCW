@@ -14,6 +14,7 @@ class App extends Component {
     signInFlow: "popup",
     signInOptions: [
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
       signInSuccess: () => false
