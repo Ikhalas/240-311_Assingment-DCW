@@ -1,7 +1,7 @@
-// MessageBox.js
+// CommentBox.js
 import React, {Component} from 'react';
 import trim from 'trim';
-class MessageBox extends Component {
+class CommentBox extends Component {
   constructor(props){
     super(props);
     this.onChange = this.onChange.bind(this);
@@ -32,7 +32,7 @@ render() {
       <form>
        <textarea 
           className="textarea"
-          placeholder="Type a message"
+          placeholder="Comment"
           cols="100"
           onChange={this.onChange}
           onKeyUp={this.onKeyup}
@@ -42,4 +42,4 @@ render() {
     )
   }
 }
-export default MessageBox
+export default CommentBox

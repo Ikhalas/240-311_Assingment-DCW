@@ -1,8 +1,8 @@
-// MessageList.js
+// CommentList.js
 import React, {Component} from 'react';
-import Message from './Message';
+import Message from './Comment';
 import _ from 'lodash';
-class MessageList extends Component {
+class CommentList extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -47,4 +47,4 @@ class MessageList extends Component {
     );
   }
 }
-export default MessageList
+export default CommentList

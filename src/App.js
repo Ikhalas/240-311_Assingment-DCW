@@ -1,8 +1,8 @@
 // App.js
 import React, { Component } from 'react';
 import Header from '../src/components/Header';
-import MessageList from './components/MessageList';
-import MessageBox from './components/MessageBox';
+import CommentList from './components/CommentList';
+import CommentBox from './components/CommentBox';
 import {config} from './DBConfig';
 import * as firebase from 'firebase';
 import _ from 'lodash';
@@ -97,7 +97,7 @@ render() {
         <span> 
 
       <div className="columns">  
-        <div className="header"><Header title="Home" /></div>
+        <div className="header"><Header title="Marvel Universe" /></div>
         <div className="profile">
           <h1>Welcome <b>{firebase.auth().currentUser.displayName}</b></h1>
         </div>
@@ -128,16 +128,18 @@ render() {
          
         <br></br>
         <p className="comment">Comment</p>
+     
       <div className="columns">
         <div className="column is-3"></div>
         <div className="column is-6">
-          <MessageList db={firebase} />
+          <CommentBox db={firebase} />
         </div>
       </div>
+
       <div className="columns">
         <div className="column is-3"></div>
         <div className="column is-6">
-          <MessageBox db={firebase} />
+          <CommentList db={firebase} />
         </div>
       </div>
       </span>

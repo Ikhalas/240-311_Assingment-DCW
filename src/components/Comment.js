@@ -34,7 +34,7 @@ import React, {Component} from 'react';
      </div>
     );
  }
-class Message extends Component {
+class Comment extends Component {
   constructor(props){
     super(props);
     this.onClickDelete = this.onClickDelete.bind(this);
@@ -81,17 +81,17 @@ render(){
       <a style={deleteBtnStyle} 
          className="button is-info" 
          onClick={this.toggleModal}>
-        Update
+        Edit
       </a>
       <Modal
         updateFunction={this.updateFunction}
         closeModal={this.toggleModal}
         modalState={this.state.modalState}
-        title="Edit Message">
+        title="Edit Comment">
         <table>
           <tr>
             <td>
-              Message
+              Comment
             </td>
             <td>
               <textarea  className="textarea"
@@ -108,4 +108,4 @@ render(){
    )
   }
 }
-export default Message
+export default Comment
