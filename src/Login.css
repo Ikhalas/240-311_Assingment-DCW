@@ -30,3 +30,13 @@
     position: relative;
     padding-left: 150px;
 }
+
+.logout{
+    padding-top: 20px;
+    padding-left: 800px;
+}
+
+.profile{
+    padding-top: 20px;
+    padding-left: 10px;
+}
