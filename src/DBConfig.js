@@ -1,3 +1,4 @@
+
 export const config = {
     apiKey: "AIzaSyBZtiPgrmgEDguTvwKSZI2LSJNKSto4hAQ",
     authDomain: "dcw-react-2.firebaseapp.com",
@@ -5,4 +6,4 @@ export const config = {
     projectId: "dcw-react-2",
     storageBucket: "dcw-react-2.appspot.com",
     messagingSenderId: "534230031083"
-  };
+  };  

@@ -1,14 +1,17 @@
 // App.js
 import React, { Component } from 'react';
-import Header from '../src/components/Header';
+import Header from './Header';
 import CommentList from './components/CommentList';
 import CommentBox from './components/CommentBox';
-import {config} from './DBConfig';
-import * as firebase from 'firebase';
-import _ from 'lodash';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+import {config} from './DBConfig';
 import './Login.css';
 
+import * as firebase from 'firebase';
+import _ from 'lodash';
+import axios from 'axios';
+
+const URL = 'https://us-central1-dcw-react-2.cloudfunctions.net/listhero';
 
 
 firebase.initializeApp(config);
@@ -41,15 +44,19 @@ class App extends Component {
       console.log("user", user)
     });
 
-    db.ref('/Marvel/Avengers').on('value',snapshot => {
-      let val = snapshot.val();
-      this.setState({avengers:val})
-    });
+    
+    axios.get('https://us-central1-dcw-react-2.cloudfunctions.net/listhero/Guardian')
+      .then(res => {
+        this.setState( {Guardian: res.data.results})
+        console.log(res.data.results)
+      })
 
-    db.ref('/Marvel/Guardians').on('value',snapshot => {
-      let val = snapshot.val();
-      this.setState({Guardians:val})
-    });
+    axios.get('https://us-central1-dcw-react-2.cloudfunctions.net/listhero/Avengers')
+      .then(res => {
+        this.setState( {avengers: res.data.results})
+        console.log(res.data.results)
+      })
+    
   }
 
   renderAvengers(){
@@ -87,15 +94,9 @@ class App extends Component {
  
 render() {
   return (
-
-
     <div className="container">
-       
-
       {this.state.isSignedIn ? (
-        
         <span> 
-
       <div className="columns">  
         <div className="header"><Header title="Marvel Universe" /></div>
         <div className="profile">

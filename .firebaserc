@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "dcw-react-2",
+    "firebase-react-deploy": "dcw-react-2",
+    "dcw": "dcw-react-2"
+  }
+}
